@@ -1,5 +1,8 @@
+from stat import filemode
+
 from fastapi import FastAPI
 from dotenv import load_dotenv
+from datetime import datetime
 import json
 import os
 
@@ -24,13 +27,13 @@ def evaluate_kpis():
 
     message = client.messages.create(
         model="claude-sonnet-4-5",
-        max_tokens=1024,
+        max_tokens=2048,
         messages=[{"role": "user", "content": prompt}]
     )
 
     evaluation = message.content[0].text
-
-    with open("evaluation_report.md", "w") as f:
+    filename = f"evaluation_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
+    with open(filename, "w") as f:
         f.write(evaluation)
 
-    return {"status": "report saved", "file": "evaluation_report.md"}
+    return {"status": "report saved", "file": filename}

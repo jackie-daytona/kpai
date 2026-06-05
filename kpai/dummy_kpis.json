@@ -45,10 +45,10 @@
       "prior_year_mtd": 14.3
     },
     "total_revenue_millions": {
-      "mtd": 1420,
-      "ytd": 5610,
-      "target_mtd": 1500,
-      "prior_year_mtd": 1310
+        "mtd": 1420,
+        "ytd": 5610,
+        "target": 1500,
+        "prior_year_mtd": 1310
     },
     "fuel_cost_per_gallon": {
       "mtd": 2.87,

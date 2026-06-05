@@ -3,10 +3,14 @@ def build_prompt(kpi_data: dict) -> str:
     ops = kpi_data["operational"]
     fin = kpi_data["financial"]
     cust = kpi_data["customer"]
+    MONTHS = {
+        1: "January", 2: "February", 3: "March", 4: "April",
+        5: "May", 6: "June", 7: "July", 8: "August",
+        9: "September", 10: "October", 11: "November", 12: "December"
+    }
 
     prompt = f"""
-You are an airline operations analyst. Evaluate the following KPI data for {period["month"]} {period["year"]}.
-
+You are an airline operations analyst. Evaluate the following KPI data for {MONTHS[period["month"]]} {period["year"]} at {kpi_data["station"]["name"]} ({kpi_data["station"]["code"]}).
 STRICT FORMATTING RULES:
 - Use ONLY these status indicators: 🔴 CRITICAL, 🟡 CAUTION, 🟢 POSITIVE
 - No other emojis or symbols
@@ -31,7 +35,7 @@ OPERATIONAL:
 FINANCIAL:
 - Revenue per ASM: {fin["revenue_per_available_seat_mile_cents"]["mtd"]}¢ (target: {fin["revenue_per_available_seat_mile_cents"]["target"]}¢, prior year: {fin["revenue_per_available_seat_mile_cents"]["prior_year_mtd"]}¢)
 - Cost per ASM: {fin["cost_per_available_seat_mile_cents"]["mtd"]}¢ (target: {fin["cost_per_available_seat_mile_cents"]["target"]}¢, prior year: {fin["cost_per_available_seat_mile_cents"]["prior_year_mtd"]}¢)
-- Total revenue: ${fin["total_revenue_millions"]["mtd"]}M (target: ${fin["total_revenue_millions"]["target_mtd"]}M, prior year: ${fin["total_revenue_millions"]["prior_year_mtd"]}M)
+- Total revenue: ${fin["total_revenue_millions"]["mtd"]}M (target: ${fin["total_revenue_millions"]["target"]}M, prior year: ${fin["total_revenue_millions"]["prior_year_mtd"]}M)
 
 CUSTOMER:
 - CSAT: {cust["csat_score"]["mtd"]} / 5 (target: {cust["csat_score"]["target"]}, prior year: {cust["csat_score"]["prior_year_mtd"]})

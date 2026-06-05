@@ -2,9 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPAI - KPI Evaluator</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #003366;
+        }
+        button {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #0055a5;
+        }
+        button:disabled {
+            background: #999;
+            cursor: not-allowed;
+        }
+        #output {
+            margin-top: 30px;
+            background: white;
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            line-height: 1.6;
+        }
+        #status {
+            margin-top: 12px;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
+    <h1>KPAI - Airline KPI Evaluator</h1>
+    <p>Click below to run an AI evaluation of April 2026 KPI data.</p>
+    <button id="btn" onclick="runEval()">Run Evaluation</button>
+    <div id="status"></div>
+    <div id="output"></div>
 
+    <script>
+        async function runEval() {
+            const btn = document.getElementById('btn');
+            const status = document.getElementById('status');
+            const output = document.getElementById('output');
+
+            btn.disabled = true;
+            status.textContent = 'Running evaluation...';
+            output.innerHTML = '';
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/evaluate', {
+                    method: 'POST'
+                });
+
+                const data = await response.json();
+                output.innerHTML = marked.parse(data.evaluation);
+                status.textContent = 'Done!';
+            } catch (err) {
+                status.textContent = 'Error: could not reach the API.';
+                console.error(err);
+            }
+
+            btn.disabled = false;
+        }
+    </script>
 </body>
 </html>

@@ -4,7 +4,7 @@ A full-stack AI-powered KPI evaluation tool built with FastAPI, PostgreSQL, and 
 
 ## Stack
 - **Backend:** Python, FastAPI
-- **Database:** PostgreSQL
+- **Database:** PostgreSQL (using dummy data)
 - **AI:** Anthropic Claude API
 - **Frontend:** HTML, Chart.js
 - **MCP Server:** Model Context Protocol integration for Claude Desktop

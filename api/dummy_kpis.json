@@ -1,0 +1,81 @@
+{
+  "report_period": {
+    "month": "April",
+    "year": 2026,
+    "mtd_days": 30,
+    "ytd_days": 120
+  },
+  "operational": {
+    "on_time_performance": {
+      "mtd": 0.781,
+      "ytd": 0.803,
+      "target": 0.850,
+      "prior_year_mtd": 0.812
+    },
+    "load_factor": {
+      "mtd": 0.863,
+      "ytd": 0.871,
+      "target": 0.880,
+      "prior_year_mtd": 0.849
+    },
+    "flights_completed": {
+      "mtd": 14200,
+      "ytd": 57400,
+      "target_mtd": 14500,
+      "prior_year_mtd": 13950
+    },
+    "cancellation_rate": {
+      "mtd": 0.021,
+      "ytd": 0.018,
+      "target": 0.015,
+      "prior_year_mtd": 0.019
+    }
+  },
+  "financial": {
+    "revenue_per_available_seat_mile_cents": {
+      "mtd": 18.4,
+      "ytd": 17.9,
+      "target": 19.0,
+      "prior_year_mtd": 17.2
+    },
+    "cost_per_available_seat_mile_cents": {
+      "mtd": 15.1,
+      "ytd": 14.8,
+      "target": 14.5,
+      "prior_year_mtd": 14.3
+    },
+    "total_revenue_millions": {
+        "mtd": 1420,
+        "ytd": 5610,
+        "target": 1500,
+        "prior_year_mtd": 1310
+    },
+    "fuel_cost_per_gallon": {
+      "mtd": 2.87,
+      "ytd": 2.79,
+      "target": 2.70,
+      "prior_year_mtd": 2.61
+    }
+  },
+  "customer": {
+    "csat_score": {
+      "mtd": 4.1,
+      "ytd": 4.2,
+      "target": 4.5,
+      "scale": "1-5",
+      "prior_year_mtd": 4.3
+    },
+    "net_promoter_score": {
+      "mtd": 38,
+      "ytd": 41,
+      "target": 50,
+      "prior_year_mtd": 44
+    },
+    "baggage_claim_rate_per_1000": {
+      "mtd": 3.8,
+      "ytd": 3.5,
+      "target": 3.0,
+      "prior_year_mtd": 4.1
+    }
+  }
+}
